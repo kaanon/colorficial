@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Colorficial by kaanon</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Colorficial</h1>
+        <p>Javascript Class for determining color names</p>
+
+        <p class="view"><a href="https://github.com/kaanon/colorficial">View the Project on GitHub <small>kaanon/colorficial</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/kaanon/colorficial/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/kaanon/colorficial/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/kaanon/colorficial">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="colorficial" class="anchor" href="#colorficial" aria-hidden="true"><span class="octicon octicon-link"></span></a>colorficial</h1>
+
+<p>Javascript Class for determining color names</p>
+
+<p>Color utility. Provides functionality to determine the name of a color.
+Also provides hue, saturation, value, lightness (or brightness) and can be exported as a css declaration.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>TBD</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="instantiation" class="anchor" href="#instantiation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instantiation</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>(<span class="pl-c1">255</span>,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>);
+<span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>([<span class="pl-c1">255</span>,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>]);
+<span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>(<span class="pl-s"><span class="pl-pds">'</span>#FF9922<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>({r<span class="pl-k">:</span> <span class="pl-c1">255</span>, g<span class="pl-k">:</span> <span class="pl-c1">100</span>, b<span class="pl-k">:</span> <span class="pl-c1">100</span>});
+<span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>({red<span class="pl-k">:</span> <span class="pl-c1">255</span>, green<span class="pl-k">:</span> <span class="pl-c1">100</span>, blue<span class="pl-k">:</span> <span class="pl-c1">100</span>});</pre></div>
+
+<h3>
+<a id="is-methods" class="anchor" href="#is-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>"is" Methods</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>([<span class="pl-c1">11</span>, <span class="pl-c1">170</span>, <span class="pl-c1">181</span>]);
+
+<span class="pl-smi">c</span>.<span class="pl-c1">name</span>();
+<span class="pl-c">// blue</span>
+
+<span class="pl-smi">c</span>.<span class="pl-en">is</span>(<span class="pl-s"><span class="pl-pds">'</span>red<span class="pl-pds">'</span></span>);
+<span class="pl-c">// false</span>
+<span class="pl-smi">c</span>.<span class="pl-en">is</span>(<span class="pl-s"><span class="pl-pds">'</span>blue<span class="pl-pds">'</span></span>);
+<span class="pl-c">// true</span>
+
+<span class="pl-smi">c</span>.<span class="pl-en">isLight</span>();
+<span class="pl-c">// true (if brightness &gt; 200)</span>
+<span class="pl-smi">c</span>.<span class="pl-en">isLight</span>(<span class="pl-c1">100</span>);
+<span class="pl-c">// true (if brightness &gt; 100);</span>
+
+<span class="pl-smi">c</span>.<span class="pl-en">isDark</span>();
+<span class="pl-c">// true (if brightness &lt; 85)</span>
+<span class="pl-smi">c</span>.<span class="pl-en">isDark</span>(<span class="pl-c1">100</span>);
+<span class="pl-c">// true (if brightness &lt; 100);</span>
+</pre></div>
+
+<h3>
+<a id="color-attributes" class="anchor" href="#color-attributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Color Attributes</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>([<span class="pl-c1">11</span>, <span class="pl-c1">170</span>, <span class="pl-c1">181</span>]);
+<span class="pl-smi">c</span>.<span class="pl-smi">red</span>;
+<span class="pl-c">// 11</span>
+<span class="pl-smi">c</span>.<span class="pl-smi">green</span>;
+<span class="pl-c">// 170</span>
+<span class="pl-smi">c</span>.<span class="pl-smi">blue</span>
+<span class="pl-c">// 181</span>
+<span class="pl-smi">c</span>.<span class="pl-smi">hue</span>
+<span class="pl-c">// 183.88  (measured between 0&amp;deg; and 360&amp;deg;)</span>
+<span class="pl-smi">c</span>.<span class="pl-smi">brightness</span>
+<span class="pl-c">// 37.65 (measured between 0 and 100)</span>
+<span class="pl-smi">c</span>.<span class="pl-smi">lightness</span>
+<span class="pl-c">// 37.65 (synonym of brightness)</span>
+<span class="pl-smi">c</span>.<span class="pl-smi">saturation</span>
+<span class="pl-c">// 88.54 (measured between 0 and 100)</span>
+<span class="pl-smi">c</span>.<span class="pl-c1">value</span>
+<span class="pl-c">// 88.54 (measured between 0 and 100)</span></pre></div>
+
+<h3>
+<a id="utility-methods" class="anchor" href="#utility-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utility Methods</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>([<span class="pl-c1">11</span>, <span class="pl-c1">170</span>, <span class="pl-c1">181</span>]);
+
+<span class="pl-smi">c</span>.<span class="pl-en">css</span>();
+<span class="pl-c">// "rgb(11,170,181)"</span>
+<span class="pl-smi">c</span>.<span class="pl-en">css</span>(<span class="pl-c1">0.5</span>);
+<span class="pl-c">// "rgba(11,170,181,0.5)"</span>
+<span class="pl-smi">c</span>.<span class="pl-en">cssHSL</span>();
+<span class="pl-c">// "hsl(11,170,181,0.5)"</span>
+<span class="pl-smi">c</span>.<span class="pl-en">cssHSV</span>();
+<span class="pl-c">// "hsv(11,170,181,0.5)"</span>
+<span class="pl-smi">c</span>.<span class="pl-en">toJSON</span>();
+<span class="pl-c">// { red: 11, green: 170, blue: 181 }</span>
+<span class="pl-smi">c</span>.<span class="pl-en">toArray</span>();
+<span class="pl-c">// [ 11, 170, 181 ]</span>
+<span class="pl-smi">c</span>.<span class="pl-c1">toString</span>()
+<span class="pl-c">// "[11, 170, 181]"</span></pre></div>
+
+<h2>
+<a id="supported-colors" class="anchor" href="#supported-colors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Supported Colors</h2>
+
+<ul>
+<li>red</li>
+<li>orange</li>
+<li>brown</li>
+<li>yellow</li>
+<li>green</li>
+<li>blue</li>
+<li>indigo</li>
+<li>violet</li>
+<li>pink</li>
+<li>gray</li>
+<li>black</li>
+<li>white</li>
+</ul>
+
+<h2>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODO</h2>
+
+<ul>
+<li>bower support</li>
+<li>npm support</li>
+<li>more color names</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="http://opensource.org/licenses/MIT">MIT</a> © <a href="http://kaanon.com">Kaanon MacFarlane</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/kaanon">kaanon</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
