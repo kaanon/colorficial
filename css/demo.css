@@ -1,0 +1,9 @@
+ul.colors { padding-left: 0;}
+.colors li { width: 25%; height: 100px;  display: block; margin: 0; float: left; text-align: center; padding-top:10px; box-sizing: border-box; color:#444;}
+.colors li div { display: none; }
+.colors li:hover div { display: block; line-height: 12px; font-size: 12px;}
+strong { font-size: larger; color:inherit;}
+label { display: inline-block;text-align: right;}
+fieldset { width: 48%; margin: 0 1% 10px; float: left; display: block; border: 1px solid #ccc; box-sizing: border-box; text-align: center;}
+code { white-space: pre;}
+input[type=submit] { margin-top: 10px; }
