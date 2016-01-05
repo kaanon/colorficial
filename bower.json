@@ -1,0 +1,30 @@
+{
+  "name": "colorficial",
+  "description": "Color comparison to determine color.name()",
+  "main": "dist/color.js",
+  "authors": [
+    "Kaanon MacFarlane <kaanonm@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "color",
+    "color name"
+    "match",
+    "brightness",
+    "hue",
+    "value",
+    "saturation",
+    "is color",
+    "is",
+    "lightness"
+  ],
+  "homepage": "https://github.com/kaanon/colorficial",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

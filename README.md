@@ -101,6 +101,7 @@ c.toString()
 ## TODO
 - bower support
 - npm support
+- more color names
 
 ## License
 
