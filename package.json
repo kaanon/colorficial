@@ -1,6 +1,9 @@
 {
   "name": "colorficial",
   "version": "0.1.0",
+  "author":"Kaanon MacFarlane <kaanonm@gmail.com>",
+  "main":"dist/color.js",
+  "description": "Javascript Class for determining color names",
   "devDependencies": {
     "babel-core": "^6.3.17",
     "babel-loader": "^6.2.0",
@@ -13,5 +16,17 @@
     "gulp-nodemon": "^2.0.4",
     "gulp":"*"
   },
-  "description": "Javascript Class for determining color names"
+  "keywords": [
+    "color",
+    "color name"
+    "match",
+    "brightness",
+    "hue",
+    "value",
+    "saturation",
+    "is color",
+    "is",
+    "lightness"
+  ],
+  "license": "MIT"
 }

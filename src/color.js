@@ -69,21 +69,21 @@ class Color {
 
     get hue(){
         if(!this._hue){
-            this.initializeHSLV();
+            this.__initializeHSLV();
         }
         return this._hue;
     }
 
     get saturation(){
         if(!this._saturation){
-            this.initializeHSLV();
+            this.__initializeHSLV();
         }
         return this._saturation;
     }
 
     get lightness(){
         if(!this._lightness){
-            this.initializeHSLV();
+            this.__initializeHSLV();
         }
         return this._lightness;
     }
@@ -94,7 +94,7 @@ class Color {
 
     get value(){
         if(!this._value){
-            this.initializeHSLV();
+            this.__initializeHSLV();
         }
         return this._value;
     }
@@ -190,24 +190,24 @@ class Color {
      * @return {number}
      */
     distance(rgb){
-        var xyz1 = this.rgb_to_xyz(this.red, this.green, this.blue),
-            xyz2 = this.rgb_to_xyz.apply(this,rgb),
-            lab1 = this.xyz_to_lab.apply(this, xyz1),
-            lab2 = this.xyz_to_lab.apply(this, xyz2),
-            difference = this.de_1994(lab1, lab2);
+        var xyz1 = this.__rgb_to_xyz(this.red, this.green, this.blue),
+            xyz2 = this.__rgb_to_xyz.apply(this,rgb),
+            lab1 = this.__xyz_to_lab.apply(this, xyz1),
+            lab2 = this.__xyz_to_lab.apply(this, xyz2),
+            difference = this.__de_1994(lab1, lab2);
         return difference;
     }
 
     /**
      * http://www.emanueleferonato.com/2009/08/28/color-differences-algorithm/
      * http://www.emanueleferonato.com/2009/09/08/color-difference-algorithm-part-2/
-     * @method rgb_to_xyz
+     * @method __rgb_to_xyz
      * @param  {[type]}   red   [description]
      * @param  {[type]}   green [description]
      * @param  {[type]}   blue  [description]
      * @return {[type]}
      */
-    rgb_to_xyz(r, g, b){
+    __rgb_to_xyz(r, g, b){
         var _red = r/255,
            _green = g/255,
            _blue = b/255,
@@ -243,7 +243,7 @@ class Color {
         return [x,y,z];
     }
 
-    xyz_to_lab(x, y, z){
+    __xyz_to_lab(x, y, z){
         var _x = x/95.047,
             _y = y/100,
             _z = z/108.883,
@@ -273,7 +273,7 @@ class Color {
         return [l, a, b];
     }
 
-    de_1994( lab1, lab2){
+    __de_1994( lab1, lab2){
         var c1 = Math.sqrt(lab1[1]*lab1[1]+lab1[2]*lab1[2]),
             c2 = Math.sqrt(lab2[1]*lab2[1]+lab2[2]*lab2[2]),
             dc = c1-c2,
@@ -461,7 +461,7 @@ class Color {
     }
 
     //Reference: http://axonflux.com/handy-rgb-to-hsl-and-rgb-to-hsv-color-model-c
-    initializeHSLV(){
+    __initializeHSLV(){
         var r = this.red / 255, 
             g = this.green / 255, 
             b = this.blue /255;
@@ -500,5 +500,8 @@ class Color {
         return '[' + [this.red,this.green,this.blue].join(', ') + ']';
     }
 };
+
 module.exports = Color;
-window.Color = Color;
+if(typeof window !== 'undefined'){
+    window.Color = Color;    
+}

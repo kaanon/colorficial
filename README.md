@@ -5,25 +5,37 @@ Color utility. Provides functionality to determine the name of a color.
 Also provides hue, saturation, value, lightness (or brightness) and can be exported as a css declaration.
 
 ## Installation
+`bower install colorficial`
 
-TBD
+`npm install --save colorficial`
 
 ## Usage
 
 ### Instantiation
+
 ```javascript
-var c = new Color(255,100,100);
-var c = new Color([255,100,100]);
+
+// Client Side with Bower
+var Color = require('../../bower_components/colorficial/dist/color');
+// Server Side with node.js
+var Color = require('colorficial');
+
+var c = new Color(255,100,100); //red, green, blue
+var c = new Color([255,100,100]); // [red, green, blue]
 var c = new Color('#FF9922');
 var c = new Color({r: 255, g: 100, b: 100});
 var c = new Color({red: 255, green: 100, blue: 100});
 ```
-### "is" Methods
+
+
+### Name Methods
 ```javascript
 var c = new Color([11, 170, 181]);
 
 c.name();
 // blue
+c.names();
+// ["blue","green"]
 
 c.is('red');
 // false
@@ -98,11 +110,13 @@ c.toString()
 - black
 - white
 
+## Gotchas
+Teal (blue/green) and dark pink are pretty 💩. Still working on that.
+
 ## TODO
 - bower support
 - npm support
-- more color names
+- more color names (extendable?)
 
 ## License
-
 [MIT](http://opensource.org/licenses/MIT) © [Kaanon MacFarlane](http://kaanon.com)
