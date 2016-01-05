@@ -5,157 +5,146 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Colorficial by kaanon</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/github-light.css">
+    <link rel="stylesheet" href="css/demo.css">
     <meta name="viewport" content="width=device-width">
+    <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
+	<script src='js/color.js'></script>
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body>
     <div class="wrapper">
+      <hr id='banner'/>
       <header>
-        <h1>Colorficial</h1>
-        <p>Javascript Class for determining color names</p>
+        <img src='logo.png'>
+        
+        <h1>colorficial</h1>
+        <p>Determine the name of a color easily.</p>
 
         <p class="view"><a href="https://github.com/kaanon/colorficial">View the Project on GitHub <small>kaanon/colorficial</small></a></p>
 
 
-        <ul>
-          <li><a href="https://github.com/kaanon/colorficial/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/kaanon/colorficial/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/kaanon/colorficial">View On <strong>GitHub</strong></a></li>
-        </ul>
+        <p class="view">
+          <a href="documentation.html">Documentation
+          <small>read the documentation</small>
+          </a>
+        </p>
       </header>
       <section>
-        <h1>
-<a id="colorficial" class="anchor" href="#colorficial" aria-hidden="true"><span class="octicon octicon-link"></span></a>colorficial</h1>
+		<fieldset>
+			<h2>Enter a hex code</h2>
+			<label>Code:  </label> <input type='string' placeholder='#FFFFFF' maxlength='7' name='hex' > <br/>
+			<input type='submit' value='Add' class='newColorFromHex'>	
+		</fieldset>
+		<fieldset>
+			<h2>Enter RGB Values</h2>
+			<label>Red:   </label> <input type='number' min="0" max="255" name='red' > <br/>
+			<label>Green: </label> <input type='number' min="0" max="255" name='green' > <br/> 
+			<label>Blue:  </label> <input type='number' min="0" max="255" name='blue' > <br/>
+			<input type='submit' value='Add' class='newColorFromRGB'>	
+		</fieldset>
 
-<p>Javascript Class for determining color names</p>
-
-<p>Color utility. Provides functionality to determine the name of a color.
-Also provides hue, saturation, value, lightness (or brightness) and can be exported as a css declaration.</p>
-
-<h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
-
-<p>TBD</p>
-
-<h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
-
-<h3>
-<a id="instantiation" class="anchor" href="#instantiation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instantiation</h3>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>(<span class="pl-c1">255</span>,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>);
-<span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>([<span class="pl-c1">255</span>,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>]);
-<span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>(<span class="pl-s"><span class="pl-pds">'</span>#FF9922<span class="pl-pds">'</span></span>);
-<span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>({r<span class="pl-k">:</span> <span class="pl-c1">255</span>, g<span class="pl-k">:</span> <span class="pl-c1">100</span>, b<span class="pl-k">:</span> <span class="pl-c1">100</span>});
-<span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>({red<span class="pl-k">:</span> <span class="pl-c1">255</span>, green<span class="pl-k">:</span> <span class="pl-c1">100</span>, blue<span class="pl-k">:</span> <span class="pl-c1">100</span>});</pre></div>
-
-<h3>
-<a id="is-methods" class="anchor" href="#is-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>"is" Methods</h3>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>([<span class="pl-c1">11</span>, <span class="pl-c1">170</span>, <span class="pl-c1">181</span>]);
-
-<span class="pl-smi">c</span>.<span class="pl-c1">name</span>();
-<span class="pl-c">// blue</span>
-
-<span class="pl-smi">c</span>.<span class="pl-en">is</span>(<span class="pl-s"><span class="pl-pds">'</span>red<span class="pl-pds">'</span></span>);
-<span class="pl-c">// false</span>
-<span class="pl-smi">c</span>.<span class="pl-en">is</span>(<span class="pl-s"><span class="pl-pds">'</span>blue<span class="pl-pds">'</span></span>);
-<span class="pl-c">// true</span>
-
-<span class="pl-smi">c</span>.<span class="pl-en">isLight</span>();
-<span class="pl-c">// true (if brightness &gt; 200)</span>
-<span class="pl-smi">c</span>.<span class="pl-en">isLight</span>(<span class="pl-c1">100</span>);
-<span class="pl-c">// true (if brightness &gt; 100);</span>
-
-<span class="pl-smi">c</span>.<span class="pl-en">isDark</span>();
-<span class="pl-c">// true (if brightness &lt; 85)</span>
-<span class="pl-smi">c</span>.<span class="pl-en">isDark</span>(<span class="pl-c1">100</span>);
-<span class="pl-c">// true (if brightness &lt; 100);</span>
-</pre></div>
-
-<h3>
-<a id="color-attributes" class="anchor" href="#color-attributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Color Attributes</h3>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>([<span class="pl-c1">11</span>, <span class="pl-c1">170</span>, <span class="pl-c1">181</span>]);
-<span class="pl-smi">c</span>.<span class="pl-smi">red</span>;
-<span class="pl-c">// 11</span>
-<span class="pl-smi">c</span>.<span class="pl-smi">green</span>;
-<span class="pl-c">// 170</span>
-<span class="pl-smi">c</span>.<span class="pl-smi">blue</span>
-<span class="pl-c">// 181</span>
-<span class="pl-smi">c</span>.<span class="pl-smi">hue</span>
-<span class="pl-c">// 183.88  (measured between 0&amp;deg; and 360&amp;deg;)</span>
-<span class="pl-smi">c</span>.<span class="pl-smi">brightness</span>
-<span class="pl-c">// 37.65 (measured between 0 and 100)</span>
-<span class="pl-smi">c</span>.<span class="pl-smi">lightness</span>
-<span class="pl-c">// 37.65 (synonym of brightness)</span>
-<span class="pl-smi">c</span>.<span class="pl-smi">saturation</span>
-<span class="pl-c">// 88.54 (measured between 0 and 100)</span>
-<span class="pl-smi">c</span>.<span class="pl-c1">value</span>
-<span class="pl-c">// 88.54 (measured between 0 and 100)</span></pre></div>
-
-<h3>
-<a id="utility-methods" class="anchor" href="#utility-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utility Methods</h3>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> c <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Color</span>([<span class="pl-c1">11</span>, <span class="pl-c1">170</span>, <span class="pl-c1">181</span>]);
-
-<span class="pl-smi">c</span>.<span class="pl-en">css</span>();
-<span class="pl-c">// "rgb(11,170,181)"</span>
-<span class="pl-smi">c</span>.<span class="pl-en">css</span>(<span class="pl-c1">0.5</span>);
-<span class="pl-c">// "rgba(11,170,181,0.5)"</span>
-<span class="pl-smi">c</span>.<span class="pl-en">cssHSL</span>();
-<span class="pl-c">// "hsl(11,170,181,0.5)"</span>
-<span class="pl-smi">c</span>.<span class="pl-en">cssHSV</span>();
-<span class="pl-c">// "hsv(11,170,181,0.5)"</span>
-<span class="pl-smi">c</span>.<span class="pl-en">toJSON</span>();
-<span class="pl-c">// { red: 11, green: 170, blue: 181 }</span>
-<span class="pl-smi">c</span>.<span class="pl-en">toArray</span>();
-<span class="pl-c">// [ 11, 170, 181 ]</span>
-<span class="pl-smi">c</span>.<span class="pl-c1">toString</span>()
-<span class="pl-c">// "[11, 170, 181]"</span></pre></div>
-
-<h2>
-<a id="supported-colors" class="anchor" href="#supported-colors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Supported Colors</h2>
-
-<ul>
-<li>red</li>
-<li>orange</li>
-<li>brown</li>
-<li>yellow</li>
-<li>green</li>
-<li>blue</li>
-<li>indigo</li>
-<li>violet</li>
-<li>pink</li>
-<li>gray</li>
-<li>black</li>
-<li>white</li>
-</ul>
-
-<h2>
-<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODO</h2>
-
-<ul>
-<li>bower support</li>
-<li>npm support</li>
-<li>more color names</li>
-</ul>
-
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
-
-<p><a href="http://opensource.org/licenses/MIT">MIT</a> © <a href="http://kaanon.com">Kaanon MacFarlane</a></p>
-      </section>
-      <footer>
+		<p class='hint'>
+			<!-- Hint: reload the page to see different values <br/> -->
+			<input type='submit' value='Random Colors' class='randomizeColors'>	
+		</p>
+		<br class='clear'/>
+		<ul class='colors'></ul>
+	</section>
+	<footer>
         <p>This project is maintained by <a href="https://github.com/kaanon">kaanon</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+
+<script>
+colors = [];
+$colors = $('ul.colors');
+var x = new Color(0,0,0);
+var named = _.keys(x.getColorMap());
+
+
+function redraw(){
+	$colors.html('');
+	for(var i = 0, len = colors.length; i<len;i++){
+		var c = colors[i];
+		var css = {backgroundColor: c.css()};
+		var $li = $('<li>');
+
+		if(c.isDark()){
+			css.color = 'white';
+		}
+		if(c.isNew){
+			css['box-shadow'] = 'inset 0 10px 0px ' + c.css(0.5);
+			// css['box-shadow'] = 'inset 0 2px 10px #F00';
+    	}
+		$li.css(css);
+		var matchedColors = [];
+		for(var j = 0, l2 = named.length; j<l2; j++){
+			var colorName = named[j];
+			// console.log('Comparing', c.toString(), ' to ', colorName);
+			if(c.is(colorName)){
+				matchedColors.push(colorName);
+			}		
+		}
+		var $span = $('<span>').html(c.css());
+		var $strong = $('<strong>').html(matchedColors.join(', ') + '<br/>');
+		var hue = 'hue: ' + c.hue ;
+		var sat = 'saturation: ' + c.saturation ;
+		var lig = 'brightness: ' + c.brightness ;
+		
+		$div = $('<div>').html([hue,sat,lig].join('<br/>'));
+
+		$li.append($strong);
+		$li.append($span);
+		$li.append($div);
+		$colors.append($li);
+	}
+}
+
+function randomColors(){
+	var colorList = [];
+	for(var k = 0; k<24; k++){
+		var a = [_.random(0,255), _.random(0,255), _.random(0,255)];
+		colorList.push(a);
+	}
+	var x = new Color(0,0,0);
+	var named = _.keys(x.getColorMap());
+	colorList = colorList.map(function(c){
+		return new Color(c);
+	});
+	colorList = _(colorList).sortBy('hue');
+	return colorList;
+}
+
+
+$('input[type=submit].newColorFromRGB').on('click', function(){
+	var r = $('[name=red]').val(),
+		g = $('[name=green]').val(),
+		b = $('[name=blue]').val(),
+		newColor = new Color(r,g,b);
+  newColor.isNew = true;
+	colors.unshift(newColor);
+	redraw();
+});
+$('input[type=submit].newColorFromHex').on('click', function(){
+	var hex = $('[name=hex]').val(),
+		newColor = new Color(hex);
+  newColor.isNew = true;
+	colors.unshift(newColor);
+	redraw();
+});
+$('input[type=submit].randomizeColors').on('click', function(){
+	colors = randomColors();
+	redraw();
+});
+
+colors = randomColors();
+redraw();
+</script>
+</body>
 </html>
