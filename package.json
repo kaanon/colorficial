@@ -1,7 +1,7 @@
 {
   "name": "colorficial",
   "version": "0.1.1",
-  "author":"Kaanon MacFarlane <kaanonm@gmail.com>",
+  "author":"Kaanon MacFarlane (http://kaanon.com)",
   "main":"dist/color.js",
   "description": "Javascript Class for determining color names",
   "devDependencies": {
