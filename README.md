@@ -4,6 +4,9 @@ Javascript Class for determining color names
 Color utility. Provides functionality to determine the name of a color.
 Also provides hue, saturation, value, lightness (or brightness) and can be exported as a css declaration.
 
+## Full Documentation and Demo
+http://kaanon.github.io/colorficial/
+
 ## Installation
 `bower install colorficial`
 
