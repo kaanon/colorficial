@@ -98,6 +98,31 @@ class Color {
         }
         return this._value;
     }
+    
+    get X(){
+	    if(!this._x){
+            this.__initializeXYZ();
+        }
+        return this._x;
+    }
+    
+    get Y(){
+	    if(!this._y){
+            this.__initializeXYZ();
+        }
+        return this._y;
+    }
+    
+    get Z(){
+	    if(!this._z){
+            this.__initializeXYZ();
+        }
+        return this._z;
+    }
+    
+    get luminance(){
+        return this.Y;
+    }
 
     name(){
         var colorMap = this.getColorMap(),
@@ -291,12 +316,12 @@ class Color {
         return this.css();
     }
 
-    isLight(divider = 200){
-        return (this.brightness >= divider);
+    isLight(divider = 45){
+        return (this.luminance > divider);
     };
 
-    isDark(divider = 50){
-        return (this.brightness <= divider);
+    isDark(divider = 45){
+        return (this.luminance <= divider);
     };
 
     isSkinTone(brown = [139,69,19]){
@@ -488,6 +513,13 @@ class Color {
         this._lightness  = parseFloat( (l * 100).toFixed(2) );
         this._brightness = parseFloat( ((this.red*299)+(this.green*587)+(this.blue*114))/1000 );
         this._value      = parseFloat( v );
+    }
+    
+    __initializeXYZ(){
+	    var xyz = this.rgb_to_xyz(this.red, this.green, this.blue)
+	    this._x = xyz[0]
+	    this._y = xyz[1]
+	    this._z = xyz[2]
     }
 
     toJSON(){
